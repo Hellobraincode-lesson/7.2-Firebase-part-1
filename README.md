@@ -7,7 +7,9 @@ flowchart TD
     A[return] --> B[<div>]
     B --> C[<h1>Movies</h1>]
     B --> D{videoUrl байгаа эсэх}
-    D -- Байгаа --> E[<video controls width="600">\n  <source src={videoUrl} type="video/mp4" />\n  Your browser does not support the video tag.\n</video>]
+    D -- Байгаа --> E[<video controls width="600">]
+    E --> G[<source src={videoUrl} type="video/mp4" />]
+    E --> H[Your browser does not support the video tag.]
     D -- Байхгүй --> F[<p>Loading video...</p>]
 ```
 
@@ -68,12 +70,12 @@ flowchart TD
 ```mermaid
 flowchart TD
     A[useEffect Hook] --> B{Хэрэглэгч байгаа эсэхийг шалгах}
-    B -- Үгүй --> C[return (юу ч хийхгүй)]
-    B -- Тийм --> D[fetchVideo() async function]
-    D --> E[Storage доторх "movies/Screen Recording 2025-07-13 192952.mp4" файлын ref үүсгэнэ]
+    B -- "Үгүй" --> C[return (юу ч хийхгүй)]
+    B -- "Тийм" --> D[fetchVideo() async function]
+    D --> E[Storage доторх 'movies/Screen Recording 2025-07-13 192952.mp4' файлын ref үүсгэнэ]
     E --> F[Firebase Storage-оос татах линк авахыг оролдоно]
-    F -- Амжилтгүй --> G[console.error("Error fetching...")]
-    F -- Амжилттай --> H[setVideoUrl(url)]
+    F -- "Амжилтгүй" --> G[console.error('Error fetching...')]
+    F -- "Амжилттай" --> H[setVideoUrl(url)]
 ```
 
 ## return хэсгийн тайлбар
